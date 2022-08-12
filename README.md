@@ -1,0 +1,2 @@
+# SAMP
+New SAMP Wiki
