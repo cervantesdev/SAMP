@@ -1,5 +1,5 @@
-forward GetDistanceBetweenPlayers(playerid, id, Float:distance);
-public GetDistanceBetweenPlayers(playerid, id, Float:distance)
+forward PlayerDistance(playerid, id, Float:distance);
+public PlayerDistance(playerid, id, Float:distance)
 {
 	new Float:x, Float:y, Float:z;
 	GetPlayerPos(playerid, x, y, z);
@@ -11,3 +11,7 @@ public GetDistanceBetweenPlayers(playerid, id, Float:distance)
 	}
 	return false;
 }
+
+/// Örnek Kullanım
+
+if(!PlayerDistance(playerid, id, 3.0)) return SendClientMessage(playerid, -1, "Bu kişi sizin yakınınızda bulunmuyor.");
