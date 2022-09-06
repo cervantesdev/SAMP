@@ -13,10 +13,22 @@ stock GetIPForPlayer(playerid)
 }
 stock KickPlayer(playerid)
 {
-	new PlayerName[25];
+	new PlayerName[22];
 	GetPlayerName(playerid, PlayerName, sizeof(PlayerName));
 	SendMessageToAdm(1, COLOR_RED, "(%s %s) AdmLog: %s birden fazla hesap ile bağlanmaya denedi.[code-1]",ReturnDate(), ReturnTime(), PlayerName);
-  SendClientMessage(playerid, COLOR_RED, "Aynı IP üzerinde birden fazla hesap ile giriş yapamazsınız.");
+        SendClientMessage(playerid, COLOR_RED, "Aynı IP üzerinde birden fazla hesap ile giriş yapamazsınız.");
 	Kick(playerid);
+	return 1;
+}
+
+
+//// Nasıl çalışır?
+#define MAX_ACCOUNT 1
+
+public OnPlayerConnect(playerid)
+{
+	new PlayerName[22];
+	GetPlayerName(playerid, PlayerName, sizeof(PlayerName));
+	if(IPCount(GetIPForPlayer(playerid)) > MAX_ACCOUNT) return KickPlayer(playerid), 0;
 	return 1;
 }
